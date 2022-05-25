@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://board.png" type="Texture" id=1]
+[ext_resource path="res://gameLogic.gd" type="Script" id=2]
+[ext_resource path="res://movement.gd" type="Script" id=3]
+[ext_resource path="res://towerHandler.gd" type="Script" id=5]
+
+[sub_resource type="TileSet" id=1]
+0/name = "board.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0.0666667, 0.00392157, 0.00392157, 1 )
+0/region = Rect2( 32, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1239, 166, 0, 0, 0, 0, 1079, 163, 0, 0, 0, 0, 1080, 332, 0, 0, 0, 0, 1070, 677, 0, 0, 0, 0, 935, 681, 0, 0, 0, 0, 927, 93, 0, 0, 0, 0, 609, 93, 0, 0, 0, 0, 602, 674, 0, 0, 0, 0, 412, 678, 0, 0, 0, 0, 410, 548, 0, 0, 0, 0, 478, 548, 0, 0, 0, 0, 471, 230, 0, 0, 0, 0, 289, 227, 0, 0, 0, 0, 288, 684, 0, 0, 0, 0, 30, 684 )
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+button_mapping = {
+0: null
+}
+
+[node name="Board" type="Sprite" parent="."]
+modulate = Color( 0.278431, 0.215686, 0, 1 )
+position = Vector2( 637.75, 397.25 )
+scale = Vector2( 1.37699, 1.8356 )
+texture = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 18, 0, 0, 65544, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131087, 0, 0, 196611, 0, 0, 196616, 0, 0, 196618, 0, 0, 196621, 0, 0, 196623, 0, 0, 196626, 0, 0, 262147, 0, 0, 262149, 0, 0, 262150, 0, 0, 262152, 0, 0, 262154, 0, 0, 262157, 0, 0, 262159, 0, 0, 262162, 0, 0, 327683, 0, 0, 327685, 0, 0, 327686, 0, 0, 327688, 0, 0, 327690, 0, 0, 327693, 0, 0, 327695, 0, 0, 327698, 0, 0, 393219, 0, 0, 393221, 0, 0, 393222, 0, 0, 393224, 0, 0, 393226, 0, 0, 393229, 0, 0, 393231, 0, 0, 393234, 0, 0, 458755, 0, 0, 458757, 0, 0, 458758, 0, 0, 458760, 0, 0, 458762, 0, 0, 458765, 0, 0, 458767, 0, 0, 458770, 0, 0, 524291, 0, 0, 524293, 0, 0, 524296, 0, 0, 524298, 0, 0, 524301, 0, 0, 524303, 0, 0, 524306, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589829, 0, 0, 589831, 0, 0, 589832, 0, 0, 589834, 0, 0, 589837, 0, 0, 589839, 0, 0, 589842, 0, 0, 655365, 0, 0, 655370, 0, 0, 655373, 0, 0, 655378, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0 )
+
+[node name="PathFollow2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathFollow2D"]
+position = Vector2( 1245, 151 )
+rotation = 3.03887
+script = ExtResource( 3 )
+speed = 1200
+
+[node name="BuyingPhase" type="Control" parent="."]
+script = ExtResource( 5 )
+
+[node name="Game Interface" type="VBoxContainer" parent="BuyingPhase"]
+margin_left = 9.0
+margin_top = 7.0
+margin_right = 123.0
+margin_bottom = 62.0
+
+[node name="newlevel" type="Button" parent="BuyingPhase/Game Interface"]
+margin_right = 114.0
+margin_bottom = 20.0
+text = "Start Next Wave"
+
+[node name="farms" type="Button" parent="BuyingPhase/Game Interface"]
+margin_top = 24.0
+margin_right = 114.0
+margin_bottom = 44.0
+text = "Improve Farms"
+
+[node name="Label" type="Label" parent="BuyingPhase/Game Interface"]
+modulate = Color( 0.623529, 0.921569, 0, 1 )
+margin_top = 48.0
+margin_right = 114.0
+margin_bottom = 79.0
+text = "Gold: 0
+"
+
+[node name="Tower Buttons" type="Control" parent="BuyingPhase"]
+
+[node name="Button" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 745.0
+margin_top = 219.0
+margin_right = 757.0
+margin_bottom = 239.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button2" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 748.0
+margin_top = 531.0
+margin_right = 760.0
+margin_bottom = 551.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button3" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 746.0
+margin_top = 427.0
+margin_right = 758.0
+margin_bottom = 447.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button4" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 747.0
+margin_top = 313.0
+margin_right = 759.0
+margin_bottom = 333.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Take Damage" type="Node2D" parent="."]
+position = Vector2( 26, 531 )
+
+[node name="Area2D" type="Area2D" parent="Take Damage"]
+position = Vector2( 8, 139 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Take Damage/Area2D"]
+position = Vector2( -3, 11 )
+shape = SubResource( 3 )
+
+[node name="healthLabel" type="Label" parent="Take Damage"]
+modulate = Color( 0.976471, 0.196078, 0.196078, 1 )
+margin_left = 35.0
+margin_top = 14.0
+margin_right = 101.0
+margin_bottom = 28.0
+text = "Health: 50"
+
+[connection signal="tryToBuildTower" from="BuyingPhase" to="." method="_tryToBuildTower"]
+[connection signal="pressed" from="BuyingPhase/Game Interface/newlevel" to="." method="_on_newlevel_pressed"]
+[connection signal="pressed" from="BuyingPhase/Game Interface/farms" to="." method="_on_farms_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button" to="BuyingPhase" method="_on_Button_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button2" to="BuyingPhase" method="_on_Button2_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button3" to="BuyingPhase" method="_on_Button3_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button4" to="BuyingPhase" method="_on_Button4_pressed"]

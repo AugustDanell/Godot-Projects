@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sf_cannon_01.mp3-230862172d6355364756b216076dd7bf.mp3str"
+
+[deps]
+
+source_file="res://sf_cannon_01.mp3"
+dest_files=[ "res://.import/sf_cannon_01.mp3-230862172d6355364756b216076dd7bf.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
