@@ -1,7 +1,7 @@
 extends Node2D
 export var gold = 300
 export var passive_income = 100
-export var enem_kill = 0
+export var enem_kill = 5
 export var button_mapping = {}
 
 onready var BP = $BuyingPhase
@@ -23,10 +23,14 @@ func _ready():
 func _physics_process(delta):
 	gold_label.text = "Gold %d" % (gold)
 	
+	if(enemies == 0 and not BP.visible):
+		_finished_round()
+	
 	var bodies = final_area.get_overlapping_bodies()
 	if(len(bodies) > 0):
 		for i in range(len(bodies)):
-			health -= 1	
+			health -= 1
+			enemies -= 1	
 			bodies[i].queue_free()
 			
 		health_label.text = "Health: %d"%(health)
@@ -55,14 +59,14 @@ func _on_newlevel_pressed():
 		var enemyInst = enemy.instance()
 		path.add_child(enemyInst)
 
+func _finished_round():
+	BP.visible = true
+	path.offset = 0
+	gold += passive_income
+
 func killedEnem():
 	enemies -= 1
 	gold += enem_kill
-	if(enemies == 0):
-		BP.visible = true
-		path.offset = 0
-		gold += passive_income
-
 
 func _on_farms_pressed():
 	if(gold >= 100):

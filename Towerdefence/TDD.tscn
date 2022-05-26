@@ -23,7 +23,7 @@
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1239, 166, 0, 0, 0, 0, 1079, 163, 0, 0, 0, 0, 1080, 332, 0, 0, 0, 0, 1070, 677, 0, 0, 0, 0, 935, 681, 0, 0, 0, 0, 927, 93, 0, 0, 0, 0, 609, 93, 0, 0, 0, 0, 602, 674, 0, 0, 0, 0, 412, 678, 0, 0, 0, 0, 410, 548, 0, 0, 0, 0, 478, 548, 0, 0, 0, 0, 471, 230, 0, 0, 0, 0, 289, 227, 0, 0, 0, 0, 288, 684, 0, 0, 0, 0, 30, 684 )
+"points": PoolVector2Array( 0, 0, 0, 0, 1294, 163, 0, 0, 0, 0, 1079, 163, 0, 0, 0, 0, 1080, 332, 0, 0, 0, 0, 1070, 677, 0, 0, 0, 0, 935, 681, 0, 0, 0, 0, 927, 93, 0, 0, 0, 0, 609, 93, 0, 0, 0, 0, 602, 674, 0, 0, 0, 0, 412, 678, 0, 0, 0, 0, 410, 548, 0, 0, 0, 0, 478, 548, 0, 0, 0, 0, 471, 230, 0, 0, 0, 0, 289, 227, 0, 0, 0, 0, 288, 684, 0, 0, 0, 0, 30, 684 )
 }
 
 [sub_resource type="CircleShape2D" id=3]
@@ -49,8 +49,8 @@ tile_data = PoolIntArray( 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0,
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathFollow2D"]
-position = Vector2( 1245, 151 )
-rotation = 3.03887
+position = Vector2( 1294, 163 )
+rotation = 3.14159
 script = ExtResource( 3 )
 speed = 1200
 
@@ -116,6 +116,38 @@ margin_right = 759.0
 margin_bottom = 333.0
 rect_scale = Vector2( 3.10195, 2.10406 )
 
+[node name="Button5" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 443.0
+margin_top = 71.0
+margin_right = 455.0
+margin_bottom = 91.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button6" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 378.0
+margin_top = 70.0
+margin_right = 390.0
+margin_bottom = 90.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button7" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 309.0
+margin_top = 70.0
+margin_right = 321.0
+margin_bottom = 90.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
+[node name="Button8" type="Button" parent="BuyingPhase/Tower Buttons"]
+modulate = Color( 0.823529, 0.807843, 1, 1 )
+margin_left = 239.0
+margin_top = 69.0
+margin_right = 251.0
+margin_bottom = 89.0
+rect_scale = Vector2( 3.10195, 2.10406 )
+
 [node name="Take Damage" type="Node2D" parent="."]
 position = Vector2( 26, 531 )
 
@@ -141,3 +173,7 @@ text = "Health: 50"
 [connection signal="pressed" from="BuyingPhase/Tower Buttons/Button2" to="BuyingPhase" method="_on_Button2_pressed"]
 [connection signal="pressed" from="BuyingPhase/Tower Buttons/Button3" to="BuyingPhase" method="_on_Button3_pressed"]
 [connection signal="pressed" from="BuyingPhase/Tower Buttons/Button4" to="BuyingPhase" method="_on_Button4_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button5" to="BuyingPhase" method="_on_Button5_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button6" to="BuyingPhase" method="_on_Button6_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button7" to="BuyingPhase" method="_on_Button7_pressed"]
+[connection signal="pressed" from="BuyingPhase/Tower Buttons/Button8" to="BuyingPhase" method="_on_Button8_pressed"]
